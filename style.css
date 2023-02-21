@@ -56,8 +56,106 @@ h1, h2, h3, p {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    }
+.main-section__bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    max-width: 30px;
+    max-height: 30px;
+    animation-name: image-fall, transparency, rotation; 
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
-.brand {
+.main-section__bg1 {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    max-width: 30px;
+    max-height: 30px;
+    animation-name: image-fall, transparency, rotation; 
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+}
+.main-section__bg2 {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    max-width: 30px;
+    max-height: 30px;
+    animation-name: image-fall, transparency, rotation; 
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 1.5s;
+}
+.main-section__bg3 {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    max-width: 30px;
+    max-height: 30px;
+    animation-name: image-fall, transparency, rotation; 
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+}
+.main-section__bg4 {
+    position: absolute;
+    top: 0;
+    left: 70%;
+    max-width: 30px;
+    max-height: 30px;
+    animation-name: image-fall, transparency, rotation; 
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+@keyframes image-fall {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: 250px;
+    }
+}
+@keyframes transparency {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    7% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes rotation {
+    0% {
+        rotate: 0;
+    }
+    30% {
+       rotate: 360deg;
+    }
+    31% {
+        rotate: 0;
+    }
+    60% {
+        rotate: 360deg;
+    }
+    100% {
+        rotate: 0;
+    }
+}.brand {
     max-width: 520px;
     margin-inline: auto;
     text-align: center;
@@ -131,6 +229,7 @@ h1, h2, h3, p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     color: #000;
     font-size: 16px;
     line-height: 20px;
@@ -141,24 +240,24 @@ h1, h2, h3, p {
 .flower-block__title {
     font-weight: 400;
     padding-top: 16px;
+    flex-grow: 1;
 }
 .flower-block__price {
     font-weight: 600;
     padding-top: 8px;    
 }
 .shop-section {
-    max-height: 360px;
     background: #F3F4F6;
     display: flex;
     justify-content: flex-end;
-    gap: 6px;
+    gap: 6px;    
 }
 .shop-section__info {
     display: flex;
     flex-direction: column;
-    max-width: 583px;
+    max-width: 700px;
     justify-content: center;
-    padding-left: 15px;
+    padding: 0 0 0 97px;
 }
 .shop-section__title {
     font-weight: 700;
@@ -171,10 +270,14 @@ h1, h2, h3, p {
     align-self: flex-start;
     margin-top: 32px;
 }
+.shop-section__image {
+    display: flex;
+    align-items: flex-end;
+}
 .shop-section__image img {
-    max-width: 100%;
-    object-position: right bottom;
-    object-fit: contain;
+    max-width: 100%;  
+    height: auto; 
+    object-fit: cover; 
 }
 #menuCheckbox, .icon-close, .icon-menu {
     display: none;
@@ -184,8 +287,6 @@ label {
     top: 0;
     right: 0;
 }
-
-
 @media screen and (max-width:992px) {
     .main-section {
         min-height: auto;
@@ -205,6 +306,9 @@ label {
     .shop-section {             
         justify-content: center;
     }
+    .main-section__bg, .main-section__bg1, .main-section__bg2, .main-section__bg3, .main-section__bg4 {
+        display: none;
+    } 
 }
 @media screen and (max-width:768px) {
     .services-section {
@@ -213,18 +317,24 @@ label {
     .featured-section__container {  
         grid-template-columns: repeat(2, 1fr);
     }
+    .shop-section {
+        flex-wrap: wrap;
+        max-height: auto;
+    }
     .shop-section__info {
-        padding: 15px 0;
+        padding: 15px;
         text-align: center;
+        
     }
     .shop-section__button {        
         align-self: center;
     }
-    .shop-section__image {
-        display: none;
-    }
+    
 }
 @media screen and (max-width:500px) {
+    .wrapper {
+        padding: 15px 20px;
+    }
     .brand {
         padding: 60px 0;
     }
@@ -266,12 +376,15 @@ label {
     #menuCheckbox:checked ~ .header__auth {
         transform: translateY(0);
     }
-    #menuCheckbox:checked~label .icon-close {
+    #menuCheckbox:checked ~ label .icon-close {
         display: inline-block;
         color: #fff;
     }
-    #menuCheckbox:checked~label .icon-menu {
+    #menuCheckbox:checked ~ label .icon-menu {
         display: none;
-    }    
+    } 
+    .featured-section__container {  
+        grid-template-columns: 1fr;
+    }   
 }
 
